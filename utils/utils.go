@@ -9,10 +9,11 @@ import (
 )
 
 func ReadStringsData(path, suffix string, start, end int) []string {
-	res := make([]string, end-start+1)
-	for i := start; i <= end; i++ {
+	size := end - start + 1
+	res := make([]string, size)
+	for i := start; i < start + size; i++ {
 		file := fmt.Sprintf("%s/%s%02d.txt", path, suffix, i)
-		res[i] = FileToString(file)
+		res[i - start] = FileToString(file)
 	}
 	return res
 }
@@ -50,8 +51,8 @@ func CreateImgFingerprints(inputStr string) []string {
 			break
 		} else if row >= 11 {
 			m := (r + g + b) / 3
-			//fmt.Printf("r: %d, c: %d, m: %d\n", row, col, m)
-			if col >= 5 && col < 49 {
+
+			if col >= 5 && col <= 49 {
 				// find index
 				c_ind := (col - 5) / 9
 				if m < 50 {
@@ -59,6 +60,10 @@ func CreateImgFingerprints(inputStr string) []string {
 				} else {
 					fp[c_ind][row - 11] += "0"
 				}
+
+				//if c_ind > 2 {
+				//	fmt.Printf("r: %d, c: %d, m: %d (%d,%d,%d), %s\n", row, col, m, r, g, b, fp[c_ind][row - 11])
+				//}
 			}
 		}
 
