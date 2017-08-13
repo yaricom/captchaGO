@@ -1,5 +1,5 @@
 # Overview
-The simple captcha cracker in GO language.
+The simple captcha cracker in GO language. It applies super fast, rather naive approach to recognize captions in captchas and works only for most simple captchas generated using not distorted font, but it can tolerate small distortion as well. Presented algorithm will try to build fingerprint for each symbol during training and later at test stage generated symbols fingeprints will be used to recognize captchas. It is really surpising how many systems in the world are protected with simple captchas which can be easy cracked with described method!
 
 # Usage
 
