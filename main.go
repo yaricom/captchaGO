@@ -29,7 +29,7 @@ func fileToString(file string) string  {
 
 
 func main() {
-	if len(os.Args) < 3 {
+	if len(os.Args) < 4 {
 		printHelp()
 		os.Exit(0)
 	}
